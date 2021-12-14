@@ -142,7 +142,7 @@ object EnumType {
     val ns = sealedTrait.typeName.owner
     val subs = sealedTrait.subtypes.map(_.typeclass)
     val values = subs.flatMap(_.values).toList
-    val m = subs.map(s => s.name -> s.from _).toMap
+    lazy val m = subs.map(s => s.name -> s.from _).toMap
     val annotations = (sealedTrait.annotations ++ subs.flatMap(_.annotations)).toList
     EnumType.create(
       n,
